@@ -1,0 +1,23 @@
+version: '3.1'
+
+services:
+  tg_budget_bot:
+    container_name: radiance_bot
+    build:
+      context: ./
+    command: python app.py
+    networks:
+      - botnet
+    restart: always
+    env_file:
+      - ".env"
+    depends_on:
+      - db
+      - selen
+
+networks:
+  botnet:
+    ipam:
+      config:
+        - subnet: "172.26.0.0/16"
+
