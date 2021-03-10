@@ -10,6 +10,9 @@ menu_kb = InlineKeyboardMarkup(inline_keyboard=[
         InlineKeyboardButton(text='📜 Ваша история', callback_data='history')
     ],
     [
+        InlineKeyboardButton(text='❓ Помощь', callback_data='help')
+    ],
+    [
         InlineKeyboardButton(text='💰 Помочь проекту', callback_data='donate')
     ]
 ])

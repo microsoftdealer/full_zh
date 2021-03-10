@@ -7,4 +7,5 @@ async def set_default_commands(dp):
         types.BotCommand("/history", "Посмотреть историю Колеса Жизни"),
         types.BotCommand("/wheel", "Сделать колесо жизни"),
         types.BotCommand("/donate", "Скинуться на мороженое"),
+        types.BotCommand("/help", "Помощь по работе с ботом")
     ])

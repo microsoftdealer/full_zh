@@ -22,7 +22,7 @@ from utils.misc.analyzer import analyze
 @dp.callback_query_handler(text='cancel', state='*')
 async def cancel_all(call: types.CallbackQuery, state: FSMContext):
     await call.message.delete()
-    msg = await call.message.answer(text='Возврат в меню через пару секунд...')
+    await call.message.answer(text='Возврат в меню через пару секунд...')
     await asyncio.sleep(2)
     await state.finish()
     await call.message.answer(text='Вы в главном меню.', reply_markup=menu_kb)
@@ -58,6 +58,7 @@ async def create_full_wheel(call: types.CallbackQuery):
     await call.message.answer('Оки-доки, давай сделаем тебе "Колесо жизни"\n'
                               'Пока мы будем хранить его и ты даже'
                               ' сможешь посмотреть историю.\n'
+                              'Если не знаешь, что это такое - прочитай краткий мануал - /help\n'
                               'Погнали!')
     await asyncio.sleep(1)
     await call.message.answer('Оцени уровень любви по шкале от 0 до 10', reply_markup=levels_kb())
@@ -84,9 +85,10 @@ async def create_full_zh(message: types.Message, state: FSMContext):
     await message.answer('Оки-доки, давай сделаем тебе "Колесо жизни"\n'
                          'Пока мы будем хранить его и ты даже'
                          ' сможешь посмотреть историю.\n'
+                         'Если не знаешь, что это такое - прочитай краткий мануал - /help\n'
                          'Погнали!')
     await asyncio.sleep(1)
-    await message.answer('Оцени уровень любви по шкале от 0 до 10', reply_markup=levels_kb())
+    await message.answer('💞 Оцени уровень любви по шкале от 0 до 10', reply_markup=levels_kb())
     await FZH.Love.set()
 
 
@@ -109,32 +111,32 @@ async def write_down_full_zh(call: types.CallbackQuery, state: FSMContext):
 
     cur_state = await state.get_state()
     if cur_state == 'FZH:First':
-        await call.message.answer('Оцени уровень любви по шкале от 0 до 10', reply_markup=levels_kb())
+        await call.message.answer('💞 Оцени уровень любви по шкале от 0 до 10', reply_markup=levels_kb())
         await FZH.Love.set()
         return
     if cur_state == 'FZH:Love':
         await state.update_data(love=lvl) if lvl != 'back' else print('')
-        await call.message.answer('Оцени уровень обеспеченности по шкале от 0 до 10', reply_markup=levels_kb())
+        await call.message.answer('💰 Оцени уровень обеспеченности по шкале от 0 до 10', reply_markup=levels_kb())
         await FZH.Money.set()
         return
     if cur_state == 'FZH:Money':
         await state.update_data(money=lvl) if lvl != 'back' else print('')
-        await call.message.answer('Оцени уровень друзей по шкале от 0 до 10', reply_markup=levels_kb())
+        await call.message.answer('🏐 Оцени уровень дружбы по шкале от 0 до 10', reply_markup=levels_kb())
         await FZH.Friends.set()
         return
     if cur_state == 'FZH:Friends':
         await state.update_data(friends=lvl) if lvl != 'back' else print('')
-        await call.message.answer('Оцени уровень здоровья по шкале от 0 до 10', reply_markup=levels_kb())
+        await call.message.answer('🏥 Оцени уровень здоровья по шкале от 0 до 10', reply_markup=levels_kb())
         await FZH.Health.set()
         return
     if cur_state == 'FZH:Health':
         await state.update_data(health=lvl) if lvl != 'back' else print('')
-        await call.message.answer('Оцени уровень хобби по шкале от 0 до 10', reply_markup=levels_kb())
+        await call.message.answer('🎿 Оцени уровень хобби по шкале от 0 до 10', reply_markup=levels_kb())
         await FZH.Hobby.set()
         return
     if cur_state == 'FZH:Hobby':
         await state.update_data(hobby=lvl) if lvl != 'back' else print('')
-        await call.message.answer('Оцени уровень работы по шкале от 0 до 10', reply_markup=levels_kb())
+        await call.message.answer('🔨 Оцени уровень работы по шкале от 0 до 10', reply_markup=levels_kb())
         await FZH.Job.set()
         return
     if cur_state == 'FZH:Job':

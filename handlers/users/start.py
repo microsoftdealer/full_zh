@@ -10,4 +10,3 @@ from utils.db_api.commands import add_user
 async def bot_start(message: types.Message):
     await message.answer(f"Привет, {message.from_user.full_name}!", reply_markup=menu.menu_kb)
     await add_user(message.from_user.id, message.from_user.full_name)
-
