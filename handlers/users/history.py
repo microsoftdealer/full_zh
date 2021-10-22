@@ -13,6 +13,8 @@ from loader import dp
 from utils.db_api.commands import check_this_month
 from utils.misc.analyzer import analyze
 
+def_photo = 'AgACAgIAAxkDAAID-GA9Me0H7GQ23szEP-Ckvz6UurI7AAJqszEbtevxSUBmTbdfHgqg-6Ujmy4AAwEAAwIAA3gAAwm_AwABHgQ'
+
 
 @dp.message_handler(text='/history', state='*')
 async def history(message: types.Message, state: FSMContext):
@@ -45,8 +47,8 @@ async def history(call: types.CallbackQuery, state: FSMContext):
         text = analyze(df_dict)
         await state.update_data(text=text)
     else:
-        await call.message.answer(text='В этом месяце ничего нет.',
-                                  reply_markup=history_kb(call.from_user.id, month, year))
+        await call.message.answer_photo(photo=def_photo, caption='В этом месяце ничего нет.',
+                                        reply_markup=history_kb(call.from_user.id, month, year))
 
 
 @dp.callback_query_handler(mover_cd.filter())
@@ -75,8 +77,8 @@ async def move_history(call: types.CallbackQuery, state: FSMContext):
         text = 'Тут у Вас ничего не записано!'
         await state.update_data(text=text)
         await call.message.edit_media(InputMediaPhoto(
-            media='AgACAgIAAxkDAAID-GA9Me0H7GQ23szEP-Ckvz6UurI7AAJqszEbtevxSUBmTbdfHgqg-6Ujmy4AAwEAAwIAA3gAAwm_AwABHgQ'),
-                                      reply_markup=history_kb(call.from_user.id, month, year))
+            media=def_photo),
+            reply_markup=history_kb(call.from_user.id, month, year))
     if msg_to_remove:
         chat_id = call.message.chat.id
         await dp.bot.delete_message(chat_id=chat_id, message_id=msg_to_remove)

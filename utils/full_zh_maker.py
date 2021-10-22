@@ -12,6 +12,12 @@ else:
 
 
 def full_zh_gen(df_dict: dict, current=True) -> str:
+    """
+
+    :param df_dict:
+    :param current:
+    :return: string with generated file name
+    """
     print(df_dict)
     love = df_dict['love']
     money = df_dict['money']
