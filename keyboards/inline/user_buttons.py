@@ -72,10 +72,10 @@ level_set_kb = InlineKeyboardMarkup(inline_keyboard=[
     ]
 ])
 
-confirm_kb = InlineKeyboardMarkup(inline_keyboard=[
+confirm_mailer_kb = InlineKeyboardMarkup(inline_keyboard=[
     [
-        InlineKeyboardButton(text='✅️Да, добавляем!', callback_data='add_item'),
-        InlineKeyboardButton(text='❌Нет, кака.', callback_data='cancel')
+        InlineKeyboardButton(text='Отлично, рассылаем', callback_data='confirm_mailer'),
+        InlineKeyboardButton(text='Вернуться в меню', callback_data='cancel')
     ]
 ])
 
@@ -159,3 +159,5 @@ def select_sum(threshold=1):
         ]
     ])
     return sum_kb
+
+
