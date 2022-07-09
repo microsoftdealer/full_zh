@@ -56,7 +56,7 @@ async def confirm_announce(call: CallbackQuery, state: FSMContext):
     logging.info('List of users unprepared')
     logging.info([user.name for user in users])
     # logging.info([user.tg_id for user in users])
-    # users = [user for user in users if user.tg_id == 343667544]
+    users = [user for user in users if user.id > 20]
     # logging.info('List of users prepared')
     # logging.info([user.name for user in users])
     for user in users:
