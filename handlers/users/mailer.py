@@ -71,27 +71,27 @@ async def confirm_announce(call: CallbackQuery, state: FSMContext):
         except aiogram.exceptions.BotBlocked as err:
             errors += 1
             err_bot_bl += 1
-            logging.info(f'Exception {err} has been occurred when sending to {user.name} with tg_id {user.tg_user_id}')
+            logging.info(f'Exception {err} has been occurred when sending to {user.name} with tg_id {user.tg_id}')
             await asyncio.sleep(1)
         except aiogram.exceptions.BotKicked as err:
             errors += 1
             error_bot_k += 1
-            logging.info(f'Exception {err} has been occurred when sending to {user.name} with tg_id {user.tg_user_id}')
+            logging.info(f'Exception {err} has been occurred when sending to {user.name} with tg_id {user.tg_id}')
             await asyncio.sleep(1)
         except aiogram.exceptions.ChatNotFound as err:
             errors += 1
             error_bot_cnf += 1
-            logging.info(f'Exception {err} has been occurred when sending to {user.name} with tg_id {user.tg_user_id}')
+            logging.info(f'Exception {err} has been occurred when sending to {user.name} with tg_id {user.tg_id}')
             await asyncio.sleep(1)
         except aiogram.exceptions.UserDeactivated as err:
             errors += 1
             error_bot_ud += 1
-            logging.info(f'Exception {err} has been occurred when sending to {user.name} with tg_id {user.tg_user_id}')
+            logging.info(f'Exception {err} has been occurred when sending to {user.name} with tg_id {user.tg_id}')
             await asyncio.sleep(1)
         except aiogram.exceptions.TelegramAPIError as err:
             errors += 1
             error_bot_tapi += 1
-            logging.info(f'Exception {err} has been occurred when sending to {user.name} with tg_id {user.tg_user_id}')
+            logging.info(f'Exception {err} has been occurred when sending to {user.name} with tg_id {user.tg_id}')
             await asyncio.sleep(1)
     finish_time = datetime.datetime.now()
     delta = finish_time - start_time
